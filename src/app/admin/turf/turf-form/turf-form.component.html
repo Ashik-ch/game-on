@@ -1,56 +1,66 @@
-<div class="flex items-center justify-center min-h-screen bg-gray-100">
-    <div
-        class="block p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 w-full md:w-1/2 lg:w-1/2 mt-6">
-        <form [formGroup]="turfForm" class="mx-auto space-y-6" (ngSubmit)="onSubmit()">
-            <div>
-                <label for="turfName" class="input-label">Turf Name</label>
-                <input type="text" id="turfName" formControlName="turfName" class="form-input-field"
-                    placeholder="Enter turf name" required />
+<p-fluid>
+    <div class="flex mt-8">
+        <form class="card flex flex-col gap-6 w-full" [formGroup]="turfForm" (ngSubmit)="onSubmit()">
+            <div class="font-semibold text-xl p-header">Create Turf</div>
+            <div class="flex flex-col md:flex-row gap-6">
+                <div class="flex flex-wrap gap-2 w-full">
+                    <label for="turfName">Turf Name</label>
+                    <input pInputText id="turfName" type="text" formControlName="turfName" placeholder="Enter turf name"
+                        required />
+                </div>
+                <div class="flex flex-wrap gap-2 w-full">
+                    <label for="mobileNumber">Mobile Number</label>
+                    <input pInputText id="mobileNumber" type="tel" formControlName="mobileNumber"
+                        placeholder="Enter mobile number" required />
+                </div>
             </div>
-            <div>
-                <label for="turfLocation" class="input-label">Location</label>
-                <input type="text" id="turfLocation" formControlName="turfLocation" class="form-input-field"
-                    placeholder="Enter location" required />
+            <div class="flex flex-wrap">
+                <label for="address">Address</label>
+                <textarea pTextarea id="address" rows="4" formControlName="turfAddress"
+                    placeholder="Enter Address"></textarea>
             </div>
-            <div>
-                <label for="turf-games" class="input-label">Games</label>
-                <select id="turf-games" formControlName="turfGames" class="form-input-field" multiple>
-                    <option value="cricket">Cricket</option>
-                    <option value="football">Football</option>
-                    <option value="badminton">Badminton</option>
-                    <option value="volleyball">Volleyball</option>
-                    <option value="tableTennis">Table Tennis</option>
-                </select>
-            </div>
-            <div>
-                <label for="mobileNumber" class="input-label">Mobile Number</label>
-                <input type="tel" id="mobileNumber" formControlName="mobileNumber" class="form-input-field"
-                    placeholder="Enter mobile number" required />
-            </div>
-
-            <div class="flex flex-col md:flex-row gap-4">
-                <div class="flex-1">
+            <div class="flex flex-col md:flex-row gap-6">
+                <div class="flex flex-wrap gap-2 w-full">
                     <label for="openingTime" class="input-label">Opening Time</label>
-                    <input type="time" id="openingTime" formControlName="openingTime" class="form-input-field"
-                        required />
+                    <input pInputText type="time" id="openingTime" formControlName="openingTime"
+                        class="form-input-field" required />
                 </div>
-                <div class="flex-1">
+                <div class="flex flex-wrap gap-2 w-full">
                     <label for="closingTime" class="input-label">Closing Time</label>
-                    <input type="time" id="closingTime" formControlName="closingTime" class="form-input-field"
+                    <input pInputText type="time" id="closingTime" formControlName="closingTime"
+                        class="form-input-field" required />
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row gap-6">
+                <div class="flex flex-wrap gap-2 w-full">
+                    <label for="games">Turf Type</label>
+                    <p-multiselect [options]="turfTypes" formControlName="turfTypes" optionLabel="name"
+                        placeholder="Select Type" [maxSelectedLabels]="3" styleClass="w-full" />
+                </div>
+                <div class="flex flex-wrap gap-2 w-full">
+                    <label for="games">Games</label>
+                    <p-multiselect [options]="gamesData" [group]="true" formControlName="games"
+                        placeholder="Select Games" scrollHeight="250px" display="chip" styleClass="w-full">
+                        <ng-template let-group #group>
+                            <div class="flex items-center">
+                                <span>{{ group.label }}</span>
+                            </div>
+                        </ng-template>
+                    </p-multiselect>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row gap-6">
+                <div class="flex flex-wrap gap-2 w-full">
+                    <label for="email">Email</label>
+                    <input pInputText id="email" type="email" formControlName="email" required />
+                </div>
+                <div class="flex flex-wrap gap-2 w-full">
+                    <label for="password">Password</label>
+                    <input pInputText id="password" type="password" formControlName="password" placeholder="password"
                         required />
                 </div>
             </div>
-
-            <div>
-                <label for="email" class="input-label">Email</label>
-                <input type="email" id="email" formControlName="email" class="form-input-field"
-                    placeholder="name@example.com" required />
-            </div>
-
-            <div>
-                <label for="password" class="input-label">Password</label>
-                <input type="password" id="password" formControlName="password" class="form-input-field" required />
-            </div>
-            <button type="submit" class="float-end primary-btn w-full"> Submit </button>
+            <p-button type="submit" class="float-end">Submit</p-button>
         </form>
     </div>
+</p-fluid>
