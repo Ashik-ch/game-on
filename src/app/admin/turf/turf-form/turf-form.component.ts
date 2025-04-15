@@ -9,7 +9,7 @@ import { FluidModule } from 'primeng/fluid';
 import { InputTextModule } from 'primeng/inputtext';
 import { TextareaModule } from 'primeng/textarea';
 import { MultiSelectModule } from 'primeng/multiselect';
-import { gamesData, turfTypesEnum } from '../helper';
+import { turfTypesEnum } from '../helper';
 import { Router } from '@angular/router';
 
 @Component({
@@ -26,8 +26,6 @@ import { Router } from '@angular/router';
 
 export class TurfFormComponent {
   turfForm!: FormGroup;
-  gamesData = gamesData;
-  selectedGames = [];
   turfTypes = Object.entries(turfTypesEnum).map(([key, value]) => ({ name: value, value: key }));
   selectedTurfTypes = [];
 
@@ -44,11 +42,9 @@ export class TurfFormComponent {
     this.turfForm = this.fb.group({
       turfName: [''],
       turfAddress: [''],
-      turfGames: [],
       mobileNumber: [''],
       openingTime: [''],
       closingTime: [''],
-      games: [''],
       turfTypes: [''],
       email: ['', Validators.email],
       password: ['']
@@ -57,18 +53,15 @@ export class TurfFormComponent {
 
   onSubmit() {
     if (this.turfForm.valid) {
-      console.log(this.turfForm.value);
       const formPayload = { ...turfFormApiJson }
       formPayload.turf_name = this.turfForm.get('turfName')?.value;
       formPayload.turf_address = this.turfForm.get('turfAddress')?.value;
-      formPayload.turf_games = this.turfForm.get('turfGames')?.value;
       formPayload.mobile_number = this.turfForm.get('mobileNumber')?.value;
       formPayload.opening_time = this.turfForm.get('openingTime')?.value;
       formPayload.closing_time = this.turfForm.get('closingTime')?.value;
-      formPayload.turf_games = this.turfForm.get('games')?.value;
       formPayload.turf_types = this.turfForm.get('turfTypes')?.value;
-      formPayload.email = this.turfForm.get('email')?.value;
-      formPayload.password = this.turfForm.get('password')?.value;
+      formPayload.turf_email = this.turfForm.get('email')?.value;
+      formPayload.turf_password = this.turfForm.get('password')?.value;
       console.log("formPayload", formPayload);
       this.communicatorService.apiRunner(formPayload)
         .subscribe((apiReturn) => {
@@ -81,6 +74,4 @@ export class TurfFormComponent {
       this.turfForm.markAllAsTouched();
     }
   }
-
-
 }

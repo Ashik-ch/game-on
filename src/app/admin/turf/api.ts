@@ -8,8 +8,8 @@ export class TurfFormRestApiJson extends BaserRestApiJson {
   mobile_number!: string;
   opening_time!: string;
   closing_time!: string;
-  email!: string;
-  password!: string;
+  turf_email!: string;
+  turf_password!: string;
 }
 
 export const turfFormApiJson: TurfFormRestApiJson = {
@@ -22,8 +22,8 @@ export const turfFormApiJson: TurfFormRestApiJson = {
   mobile_number: '',
   opening_time: '',
   closing_time: '',
-  email: '',
-  password: '',
+  turf_email: '',
+  turf_password: '',
 };
 
 export const turfListApiJson: BaserRestApiJson = {

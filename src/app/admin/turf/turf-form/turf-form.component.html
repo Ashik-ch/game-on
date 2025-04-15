@@ -14,10 +14,17 @@
                         placeholder="Enter mobile number" required />
                 </div>
             </div>
-            <div class="flex flex-wrap">
-                <label for="address">Address</label>
-                <textarea pTextarea id="address" rows="4" formControlName="turfAddress"
-                    placeholder="Enter Address"></textarea>
+            <div class="flex flex-col md:flex-row gap-6">
+                <div class="flex flex-wrap gap-2 w-full">
+                    <label for="address">Address</label>
+                    <textarea pTextarea id="address" rows="4" formControlName="turfAddress"
+                        placeholder="Enter Address"></textarea>
+                </div>
+                <div class="flex flex-wrap gap-2 w-full content-start">
+                    <label for="games">Turf Type</label>
+                    <p-multiselect [options]="turfTypes" formControlName="turfTypes" optionLabel="name"
+                        placeholder="Select Type" [maxSelectedLabels]="3" styleClass="w-full" />
+                </div>
             </div>
             <div class="flex flex-col md:flex-row gap-6">
                 <div class="flex flex-wrap gap-2 w-full">
@@ -31,24 +38,7 @@
                         class="form-input-field" required />
                 </div>
             </div>
-            <div class="flex flex-col md:flex-row gap-6">
-                <div class="flex flex-wrap gap-2 w-full">
-                    <label for="games">Turf Type</label>
-                    <p-multiselect [options]="turfTypes" formControlName="turfTypes" optionLabel="name"
-                        placeholder="Select Type" [maxSelectedLabels]="3" styleClass="w-full" />
-                </div>
-                <div class="flex flex-wrap gap-2 w-full">
-                    <label for="games">Games</label>
-                    <p-multiselect [options]="gamesData" [group]="true" formControlName="games"
-                        placeholder="Select Games" scrollHeight="250px" display="chip" styleClass="w-full">
-                        <ng-template let-group #group>
-                            <div class="flex items-center">
-                                <span>{{ group.label }}</span>
-                            </div>
-                        </ng-template>
-                    </p-multiselect>
-                </div>
-            </div>
+
             <div class="flex flex-col md:flex-row gap-6">
                 <div class="flex flex-wrap gap-2 w-full">
                     <label for="email">Email</label>
