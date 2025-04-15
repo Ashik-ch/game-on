@@ -3,13 +3,15 @@ import { CommunicatorService } from '../../../service/communicator/communicator.
 import { turfListApiJson } from '../api';
 import { TurfListType } from '../helper';
 import { RouterModule } from '@angular/router';
-
+import { TableModule } from 'primeng/table';
 @Component({
   selector: 'app-turf-list',
   templateUrl: './turf-list.component.html',
   styleUrl: './turf-list.component.scss',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule,
+    TableModule
+  ],
 })
 export class TurfListComponent {
   turfList: TurfListType[] = [];
