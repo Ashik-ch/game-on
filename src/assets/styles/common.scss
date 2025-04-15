@@ -40,6 +40,8 @@
 .primary-btn {
   color: #ffffff;
   background-color: #1d4ed8;
+  padding: 0.625rem 1.25rem;
+  text-align: center;
   &:hover {
     background-color: #1e40af;
   }
@@ -54,8 +56,6 @@
   @media (min-width: 640px) {
     width: auto;
   }
-  padding: 0.625rem 1.25rem;
-  text-align: center;
 
   &.dark {
     background-color: #2563eb;
