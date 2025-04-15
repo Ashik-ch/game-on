@@ -1,4 +1,4 @@
-import { BaserRestApiJson } from '../../service';
+import { BaserRestApiJson } from "../service";
 
 export class TurfFormRestApiJson extends BaserRestApiJson {
   turf_name!: string;

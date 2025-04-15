@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Form, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CommunicatorService } from '../../service';
 import { turfFormApiJson } from '../api';
-import { CommunicatorService } from '../../../service/communicator/communicator.service';
 
 @Component({
   selector: 'app-turf-form',

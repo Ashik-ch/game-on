@@ -13,4 +13,7 @@ import { ButtonModule } from 'primeng/button';
 })
 export class HomeComponent {
 
+    ngOnInIt() {
+        console.log("sdfsdf")
+    }
 }

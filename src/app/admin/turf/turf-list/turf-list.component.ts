@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { CommunicatorService } from '../../../service/communicator/communicator.service';
-import { turfListApiJson } from '../api';
-import { TurfListType } from '../helper';
 import { RouterModule } from '@angular/router';
 import { TableModule } from 'primeng/table';
+import { CommunicatorService } from '../../service';
+import { turfListApiJson } from '../api';
+import { TurfListType } from '../helper';
+
 @Component({
   selector: 'app-turf-list',
   templateUrl: './turf-list.component.html',
@@ -18,9 +19,7 @@ export class TurfListComponent {
   constructor(private communicatorService: CommunicatorService) { }
 
   ngOnInit() {
-
     this.getTurfList();
-
   }
 
   getTurfList() {
