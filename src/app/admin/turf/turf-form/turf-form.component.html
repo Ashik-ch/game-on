@@ -1,7 +1,8 @@
 <p-fluid>
     <div class="flex mt-8">
+        {{turfForm.value|json}}
         <form class="card flex flex-col gap-6 w-full" [formGroup]="turfForm" (ngSubmit)="onSubmit()">
-            <div class="font-semibold text-xl p-header">Create Turf</div>
+            <div class="font-semibold text-xl p-header">{{turfId ? 'Update' : 'Create'}} Turf</div>
             <div class="flex flex-col md:flex-row gap-6">
                 <div class="flex flex-wrap gap-2 w-full">
                     <label for="turfName">Turf Name</label>
@@ -23,7 +24,7 @@
                 <div class="flex flex-wrap gap-2 w-full content-start">
                     <label for="games">Turf Type</label>
                     <p-multiselect [options]="turfTypes" formControlName="turfTypes" optionLabel="name"
-                        placeholder="Select Type" [maxSelectedLabels]="3" styleClass="w-full" />
+                        optionValue="value" placeholder="Select Type" [maxSelectedLabels]="3" styleClass="w-full" />
                 </div>
             </div>
             <div class="flex flex-col md:flex-row gap-6">

@@ -8,6 +8,7 @@ import { TurfFormComponent } from './turf/turf-form';
 export default [
     { path: 'turf', component: TurfCardComponent },
     { path: 'turf/create', component: TurfFormComponent },
+    { path: 'turf/update/:id', component: TurfFormComponent },
     { path: 'documentation', component: Documentation },
     { path: 'crud', component: Crud },
     { path: 'empty', component: Empty },

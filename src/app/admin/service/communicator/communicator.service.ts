@@ -14,13 +14,18 @@ export class CommunicatorService {
   ) { }
 
   apiRunner(payload: any): Observable<any> {
-    const { method, url, ...body } = payload;
-    const fullUrl = this.baseUrl + url;
+    console.log("payload", payload);
+    const { method, url, pathParameters, params, ...body } = payload;
+    let fullUrl = `${this.baseUrl}${url}`;
+
+    if (pathParameters) {
+      fullUrl += `/${pathParameters}`;
+    }
     switch (method.toLowerCase()) {
       case 'get':
-        return this.http.get(fullUrl, { params: payload.params });
+        return this.http.get(fullUrl, { params });
       case 'post':
-        return this.http.post(fullUrl, body, { params: payload.params });
+        return this.http.post(fullUrl, body, { params });
       default:
         return new Observable(observer => {
           observer.error('Invalid method or payload');

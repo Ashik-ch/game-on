@@ -28,3 +28,9 @@ export const turfListApiJson: BaserRestApiJson = {
   url: 'turf',
   method: 'get',
 };
+
+export const turfDataByIdApiJson: BaserRestApiJson = {
+  url: 'turf',
+  method: 'get',
+  pathParameters: ''
+};

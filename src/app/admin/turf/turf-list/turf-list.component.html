@@ -24,6 +24,7 @@
                 <th>Opening Hours</th>
                 <th>Location</th>
                 <th>Type</th>
+                <th>Action</th>
             </tr>
         </ng-template>
         <ng-template #body let-turf>
@@ -34,6 +35,11 @@
                 <td>{{ turf.opening_time }} - {{ turf.closing_time }}</td>
                 <td>{{ turf.turf_address }}</td>
                 <td>{{ turf.turf_types }}</td>
+                <td class="flex gap-2">
+                    <p-button severity="info" icon="pi pi-eye"> </p-button>
+                    <p-button severity="primary" icon="pi pi-pencil" (click)="editTurf(turf.id)"> </p-button>
+                    <p-button severity="danger" icon="pi pi-trash" (click)="deleteTurf()"> </p-button>
+                </td>
             </tr>
         </ng-template>
         <ng-template #emptymessage>

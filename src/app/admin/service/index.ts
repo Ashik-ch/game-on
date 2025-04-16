@@ -1,2 +1,2 @@
-export * from './communicator/communicator.service';
-export * from './communicator/helper';
+export * from './communicator';
+export * from './communicator'; 
