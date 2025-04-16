@@ -11,7 +11,18 @@ export class TurfFormRestApiJson extends BaserRestApiJson {
   turf_password!: string;
 }
 
-export const turfFormApiJson: TurfFormRestApiJson = {
+export const getTurfListApiJson: BaserRestApiJson = {
+  url: 'turf',
+  method: 'get',
+};
+
+export const getByIdTurfDataApiJson: BaserRestApiJson = {
+  url: 'turf',
+  method: 'get',
+  pathParameters: ''
+};
+
+export const postTurfCreateFormApiJson: TurfFormRestApiJson = {
   url: 'turf',
   method: 'post',
   turf_name: '',
@@ -24,13 +35,22 @@ export const turfFormApiJson: TurfFormRestApiJson = {
   turf_password: '',
 };
 
-export const turfListApiJson: BaserRestApiJson = {
+export const patchTurfUpdateFormApiJson: TurfFormRestApiJson = {
   url: 'turf',
-  method: 'get',
+  method: 'patch',
+  turf_name: '',
+  turf_address: '',
+  turf_types: [],
+  mobile_number: '',
+  opening_time: '',
+  closing_time: '',
+  turf_email: '',
+  turf_password: '',
 };
 
-export const turfDataByIdApiJson: BaserRestApiJson = {
+
+export const deleteTurfDataApiJson: BaserRestApiJson = {
   url: 'turf',
-  method: 'get',
+  method: 'delete',
   pathParameters: ''
 };

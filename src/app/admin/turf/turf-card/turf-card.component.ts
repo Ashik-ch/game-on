@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommunicatorService } from '../../service';
 import { TurfListType } from '../helper';
-import { turfListApiJson } from '../api';
+import { getTurfListApiJson } from '../api';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SelectButtonModule } from 'primeng/selectbutton';
@@ -31,7 +31,7 @@ export class TurfCardComponent {
 
   getTurfList() {
     this.isLoading = true;
-    const turfListApiPayload = { ...turfListApiJson }
+    const turfListApiPayload = { ...getTurfListApiJson }
     this.communicatorService.apiRunner(turfListApiPayload).subscribe((apiReturn) => {
       if (apiReturn) {
         this.turfList = apiReturn

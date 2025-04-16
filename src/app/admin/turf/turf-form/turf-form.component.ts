@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommunicatorService } from '../../service';
-import { turfDataByIdApiJson, turfFormApiJson } from '../api';
+import { postTurfCreateFormApiJson, getByIdTurfDataApiJson, patchTurfUpdateFormApiJson } from '../api';
 import { SelectModule } from 'primeng/select';
 import { ButtonModule } from 'primeng/button';
 import { FluidModule } from 'primeng/fluid';
@@ -75,15 +75,18 @@ export class TurfFormComponent implements OnInit {
   onSubmit() {
     this.turfForm.markAllAsTouched();
     if (this.turfForm.valid) {
-      const formPayload = { ...turfFormApiJson };
+      const formPayload = this.turfId ? { ...patchTurfUpdateFormApiJson } : { ...postTurfCreateFormApiJson };
       formPayload.turf_name = this.f['turfName'].value;
       formPayload.turf_address = this.f['turfAddress'].value;
       formPayload.mobile_number = this.f['mobileNumber'].value;
       formPayload.opening_time = this.f['openingTime'].value;
       formPayload.closing_time = this.f['closingTime'].value;
-      formPayload.turf_types = this.f['turfTypes'].value.map((t: any) => t.value);
+      formPayload.turf_types = this.f['turfTypes'].value;
       formPayload.turf_email = this.f['email'].value;
       formPayload.turf_password = this.f['password'].value;
+      if (this.turfId) {
+        formPayload.pathParameters = this.turfId;
+      }
       this.communicatorService.apiRunner(formPayload).subscribe(apiReturn => {
         if (apiReturn) {
           this.router.navigateByUrl('admin/turf');
@@ -94,7 +97,7 @@ export class TurfFormComponent implements OnInit {
 
   getTurfById() {
     this.isLoading = true;
-    const turfDataByIdPayload = { ...turfDataByIdApiJson };
+    const turfDataByIdPayload = { ...getByIdTurfDataApiJson };
     turfDataByIdPayload.pathParameters = this.turfId;
     this.communicatorService.apiRunner(turfDataByIdPayload).subscribe(apiReturn => {
       if (apiReturn) {

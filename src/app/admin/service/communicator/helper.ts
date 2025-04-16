@@ -1,5 +1,5 @@
 export class BaserRestApiJson {
     url!: string;
     pathParameters?: string;
-    method!: 'post' | 'get' | 'put' | 'delete';
+    method!: 'post' | 'get' | 'patch' | 'delete';
 }

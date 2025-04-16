@@ -26,6 +26,10 @@ export class CommunicatorService {
         return this.http.get(fullUrl, { params });
       case 'post':
         return this.http.post(fullUrl, body, { params });
+      case 'patch':
+        return this.http.patch(fullUrl, body, { params });
+      case 'delete':
+        return this.http.delete(fullUrl, { params });
       default:
         return new Observable(observer => {
           observer.error('Invalid method or payload');

@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { CommunicatorService } from '../../service';
+import { deleteTurfDataApiJson } from '../api';
 
 @Component({
   selector: 'app-turf-list',
@@ -46,6 +47,11 @@ export class TurfListComponent {
   }
 
 
-  deleteTurf() {
+  deleteTurf(id: string) {
+    const deleteTurfDataPayload = { ...deleteTurfDataApiJson }
+    deleteTurfDataPayload.pathParameters = id;
+    this.communicatorService.apiRunner(deleteTurfDataPayload).subscribe(apiReturn => {
+
+    })
   }
 }
