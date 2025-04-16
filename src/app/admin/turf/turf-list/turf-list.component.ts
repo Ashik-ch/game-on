@@ -38,10 +38,6 @@ export class TurfListComponent {
   ngOnInit() {
   }
 
-  onGlobalFilter(table: Table, event: Event) {
-    table.filterGlobal((event.target as HTMLInputElement).value, 'contains');
-  }
-
   editTurf(id: string) {
     this.router.navigateByUrl("admin/turf/update/" + id)
   }
