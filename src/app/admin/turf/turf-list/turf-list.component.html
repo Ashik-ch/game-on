@@ -24,18 +24,16 @@
                 <th>Opening Hours</th>
                 <th>Location</th>
                 <th>Type</th>
-                <th>Price</th>
             </tr>
         </ng-template>
         <ng-template #body let-turf>
             <tr>
-                <td>{{ turf.name }}</td>
-                <td>{{ turf.mobile }}</td>
-                <td>{{ turf.email }}</td>
+                <td>{{ turf.turf_name }}</td>
+                <td>{{ turf.mobile_number }}</td>
+                <td>{{ turf.turf_email }}</td>
                 <td>{{ turf.opening_time }} - {{ turf.closing_time }}</td>
-                <td>{{ turf.location }}</td>
-                <td>{{ turf.turf_type }}</td>
-                <td>{{ turf.turf_price | currency: 'INR' : 'symbol' }}</td>
+                <td>{{ turf.turf_address }}</td>
+                <td>{{ turf.turf_types }}</td>
             </tr>
         </ng-template>
         <ng-template #emptymessage>

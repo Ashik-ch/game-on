@@ -26,7 +26,7 @@ import { Router } from '@angular/router';
 
 export class TurfFormComponent {
   turfForm!: FormGroup;
-  turfTypes = Object.entries(turfTypesEnum).map(([key, value]) => ({ name: value, value: key }));
+  turfTypes = Object.values(turfTypesEnum).map(value => ({ name: value, value }));
   selectedTurfTypes = [];
 
   constructor(private fb: FormBuilder,
@@ -52,6 +52,7 @@ export class TurfFormComponent {
   }
 
   onSubmit() {
+    this.turfForm.markAllAsTouched();
     if (this.turfForm.valid) {
       const formPayload = { ...turfFormApiJson }
       formPayload.turf_name = this.turfForm.get('turfName')?.value;
@@ -59,19 +60,15 @@ export class TurfFormComponent {
       formPayload.mobile_number = this.turfForm.get('mobileNumber')?.value;
       formPayload.opening_time = this.turfForm.get('openingTime')?.value;
       formPayload.closing_time = this.turfForm.get('closingTime')?.value;
-      formPayload.turf_types = this.turfForm.get('turfTypes')?.value;
+      formPayload.turf_types = this.turfForm.get('turfTypes')?.value.map((t: any) => t.value);
       formPayload.turf_email = this.turfForm.get('email')?.value;
       formPayload.turf_password = this.turfForm.get('password')?.value;
-      console.log("formPayload", formPayload);
       this.communicatorService.apiRunner(formPayload)
         .subscribe((apiReturn) => {
           if (apiReturn) {
-            this.router.navigateByUrl('turf');
+            this.router.navigateByUrl('admin/turf');
           }
         })
-    }
-    else {
-      this.turfForm.markAllAsTouched();
     }
   }
 }

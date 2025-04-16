@@ -1,6 +1,6 @@
 export enum turfTypesEnum {
-    INDOOR = 'Indoor',
-    OUTDOOR = 'Outdoor'
+    Indoor = 'Indoor',
+    Outdoor = 'Outdoor'
 }
 
 export const gamesData = [

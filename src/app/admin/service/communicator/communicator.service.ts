@@ -13,14 +13,14 @@ export class CommunicatorService {
     private http: HttpClient,
   ) { }
 
-  apiRunner(payload: { method: string, url: string, params?: any, body?: any }): Observable<any> {
-    const url = this.baseUrl;
-    payload.url = url + payload.url;
-    switch (payload.method.toLowerCase()) {
+  apiRunner(payload: any): Observable<any> {
+    const { method, url, ...body } = payload;
+    const fullUrl = this.baseUrl + url;
+    switch (method.toLowerCase()) {
       case 'get':
-        return this.http.get(payload.url, { params: payload.params });
+        return this.http.get(fullUrl, { params: payload.params });
       case 'post':
-        return this.http.post(payload.url, payload.body, { params: payload.params });
+        return this.http.post(fullUrl, body, { params: payload.params });
       default:
         return new Observable(observer => {
           observer.error('Invalid method or payload');
