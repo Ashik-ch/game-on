@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Table, TableModule } from 'primeng/table';
 import { CommunicatorService } from '../../service';
@@ -29,24 +29,11 @@ import { ButtonModule } from 'primeng/button';
   ],
 })
 export class TurfListComponent {
+  @Input() turfList: TurfListType[] = [];
   isLoading = false;
-  turfList: TurfListType[] = [];
   constructor(private communicatorService: CommunicatorService) { }
 
   ngOnInit() {
-    this.getTurfList();
-  }
-
-  getTurfList() {
-    this.isLoading = true;
-    const turfListApiPayload = { ...turfListApiJson }
-    this.communicatorService.apiRunner(turfListApiPayload).subscribe((apiReturn) => {
-      if (apiReturn) {
-        this.turfList = apiReturn
-        this.isLoading = false;
-      }
-    });
-    this.isLoading = false;
   }
 
   onGlobalFilter(table: Table, event: Event) {

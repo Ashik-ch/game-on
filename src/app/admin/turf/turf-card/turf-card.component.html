@@ -1,0 +1,42 @@
+<div class="flex justify-end">
+    <p-select-button [(ngModel)]="layout" [options]="options" [allowEmpty]="false">
+        <ng-template #item let-option>
+            <i class="pi " [ngClass]="{ 'pi-bars': option === 'list', 'pi-table': option === 'grid' }"></i>
+        </ng-template>
+    </p-select-button>
+</div>
+@if (layout==='grid') {
+<div class="grid gap-4">
+    <div class="w-full">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            @for (turf of turfList; track $index) {
+            <div>
+                <div class="bg-white rounded-xl p-4 cursor-pointer hover:shadow-lg transition-shadow duration-200 outline-none focus:ring-2 focus:ring-blue-500"
+                    role="button" tabindex="0" (click)="navigateToTurf(turf.id, turf.turf_name)"
+                    (keydown.enter)="navigateToTurf(turf.id, turf.turf_name)">
+                    <div class="mb-2 font-semibold text-lg text-gray-800 capitalize">
+                        {{ turf.turf_name }}
+                    </div>
+                    <div class="text-gray-600 capitalize mb-4">
+                        {{ turf.turf_address }}
+                    </div>
+                    <div class="flex justify-between">
+                        <div class="">
+                            <div class="text-gray-600 capitalize mb-4">
+                                {{ turf.turf_types }}
+                            </div>
+                        </div>
+                        <div class="flex justify-end">
+                            <img src="https://cdn3d.iconscout.com/3d/premium/thumb/football-stadium-3d-icon-download-in-png-blend-fbx-gltf-file-formats--soccer-ground-pack-sports-games-icons-7870003.png?f=webp"
+                                [alt]="'Default Image'" class="h-16 w-16 object-contain rounded-sm border" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>
+}@else {
+<app-turf-list [turfList]="turfList"></app-turf-list>
+}

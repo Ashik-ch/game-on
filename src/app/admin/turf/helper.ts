@@ -27,16 +27,15 @@ export const gamesData = [
 ];
 
 export interface TurfListType {
-    id: number;
-    name: string;
-    mobile: string;
+    id: string;
+    turf_name: string;
+    mobile_number: string;
     opening_time: string;
     closing_time: string;
-    location: string;
-    turf_type: string;
-    turf_price: number;
-    email: string;
-    password: string;
+    turf_address: string;
+    turf_types: string;
+    turf_email: string;
+    turf_password: string;
     createdAt: string;
     updatedAt: string;
 }
