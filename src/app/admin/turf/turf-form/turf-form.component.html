@@ -1,6 +1,5 @@
 <p-fluid>
     <div class="flex mt-8">
-        {{turfForm.value|json}}
         <form class="card flex flex-col gap-6 w-full" [formGroup]="turfForm" (ngSubmit)="onSubmit()">
             <div class="font-semibold text-xl p-header">{{turfId ? 'Update' : 'Create'}} Turf</div>
             <div class="flex flex-col md:flex-row gap-6">
