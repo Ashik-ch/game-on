@@ -15,7 +15,8 @@ export const appRoutes: Routes = [
             // { path: '', component: HomeComponent },
             { path: 'uikit', loadChildren: () => import('./app/admin/uikit/uikit.routes') },
             { path: 'documentation', component: Documentation },
-            { path: 'admin', loadChildren: () => import('./app/admin/admin.routes') }
+            { path: 'admin', loadChildren: () => import('./app/admin/admin.routes') },
+            { path: 'turf', loadChildren: () => import('./app/turf/turf.routes') },
         ]
     },
     { path: 'landing', component: Landing },
