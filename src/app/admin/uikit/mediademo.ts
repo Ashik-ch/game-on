@@ -5,8 +5,8 @@ import { CarouselModule } from 'primeng/carousel';
 import { GalleriaModule } from 'primeng/galleria';
 import { ImageModule } from 'primeng/image';
 import { TagModule } from 'primeng/tag';
-import { PhotoService } from '../service/photo.service';
-import { Product, ProductService } from '../service/product.service';
+import { PhotoService } from '../../service/photo.service';
+import { Product, ProductService } from '../../service/product.service';
 
 @Component({
     selector: 'app-media-demo',
@@ -101,7 +101,7 @@ export class MediaDemo implements OnInit {
     constructor(
         private productService: ProductService,
         private photoService: PhotoService
-    ) {}
+    ) { }
 
     ngOnInit() {
         this.productService.getProductsSmall().then((products) => {

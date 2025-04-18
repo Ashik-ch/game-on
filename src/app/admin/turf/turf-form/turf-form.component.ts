@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CommunicatorService } from '../../service';
 import { postTurfCreateFormApiJson, getByIdTurfDataApiJson, patchTurfUpdateFormApiJson } from '../api';
 import { SelectModule } from 'primeng/select';
 import { ButtonModule } from 'primeng/button';
@@ -11,6 +10,7 @@ import { TextareaModule } from 'primeng/textarea';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { TurfListType, turfTypesEnum } from '../helper';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CommunicatorService } from '../../../service';
 
 @Component({
   selector: 'app-turf-form',

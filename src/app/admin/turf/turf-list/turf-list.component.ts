@@ -9,8 +9,8 @@ import { SelectModule } from 'primeng/select';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
-import { CommunicatorService } from '../../service';
 import { deleteTurfDataApiJson } from '../api';
+import { CommunicatorService } from '../../../service';
 
 @Component({
   selector: 'app-turf-list',

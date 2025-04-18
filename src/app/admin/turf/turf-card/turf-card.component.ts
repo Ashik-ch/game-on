@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CommunicatorService } from '../../service';
 import { TurfListType } from '../helper';
 import { getTurfListApiJson } from '../api';
 import { CommonModule } from '@angular/common';
@@ -7,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { ButtonModule } from 'primeng/button';
 import { TurfListComponent } from '../turf-list';
+import { CommunicatorService } from '../../../service';
 
 @Component({
   selector: 'app-turf-card',
