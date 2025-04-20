@@ -4,6 +4,7 @@ import { ButtonModule } from 'primeng/button';
 import { CommunicatorService } from '../../service/communicator/communicator.service';
 import { getByIdTurfDataApiJson } from './api';
 import { CommonModule } from '@angular/common';
+import { gamesData } from 'src/app/service/data';
 @Component({
   selector: 'app-turf-home',
   templateUrl: './turf-home.component.html',
@@ -17,7 +18,7 @@ import { CommonModule } from '@angular/common';
 })
 export class TurfHomeComponent {
   turfData: any
-
+  gamesData = gamesData;
   constructor(
     private readonly communicatorService: CommunicatorService
   ) { }
@@ -28,6 +29,7 @@ export class TurfHomeComponent {
 
   getTurfDetails() {
     const turfDetailsPayload = { ...getByIdTurfDataApiJson }
+    turfDetailsPayload.pathParameters = '5178a309-565c-4dab-a241-7f73e339cc8e';
     this.communicatorService.apiRunner(turfDetailsPayload).subscribe(apiReturn => {
       this.turfData = apiReturn;
       console.log("apiReturn", apiReturn);
