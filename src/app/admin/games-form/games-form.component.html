@@ -1,0 +1,20 @@
+<p-fluid>
+    <form class="card flex flex-col gap-6 w-full p-0" [formGroup]="gamesForm" (ngSubmit)="onSubmit()">
+        <div class="flex flex-col md:flex-row">
+            <div class="flex flex-wrap gap-2 w-full">
+                <label for="gameName">Game Name</label>
+                <input pInputText id="gameName" type="text" formControlName="gameName" placeholder="Enter Game name"
+                    required />
+            </div>
+        </div>
+
+        <div class="flex flex-wrap gap-2 w-full content-start">
+            <label for="games">Turf Type</label>
+            <p-multiselect [options]="gamesData" formControlName="turfType" optionLabel="name" optionValue="value"
+                placeholder="Select Type" [maxSelectedLabels]="3" styleClass="w-full" />
+        </div>
+
+        <p-button type="submit" class="float-end">Submit</p-button>
+    </form>
+
+</p-fluid>

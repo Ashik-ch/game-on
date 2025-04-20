@@ -1,1 +1,53 @@
-<p>games works!</p>
+<div class="card">
+    <p-table #dt1 [value]="gamesList" dataKey="id" [rows]="10" [loading]="isLoading" [rowHover]="true"
+        [paginator]="true" [globalFilterFields]="['game_name', 'turf_type', ]" responsiveLayout="scroll">
+        <ng-template #caption>
+            <div class="flex justify-between items-center flex-column sm:flex-row">
+                <div class="p-header">Games List</div>
+                <div class="flex gap-2">
+                    <p-iconfield iconPosition="left" class="ml-auto">
+                        <p-inputicon>
+                            <i class="pi pi-search"></i>
+                        </p-inputicon>
+                        <input type="text" pInputText placeholder="Search"
+                            (input)="dt1.filterGlobal($any($event.target).value, 'contains')" />
+                    </p-iconfield>
+                    <p-button (click)="createGames()"> Add Games</p-button>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template #header>
+            <tr>
+                <th>Game</th>
+                <th>Turf Type</th>
+                <th>Action</th>
+            </tr>
+        </ng-template>
+        <ng-template #body let-game>
+            <tr>
+                <td>{{ game.game_name }}</td>
+                <td>{{ game.turf_type }}</td>
+                <td class="flex gap-2">
+                    <p-button severity="info" icon="pi pi-eye"> </p-button>
+                    <p-button severity="primary" icon="pi pi-pencil" (click)="editGames(game.id)"> </p-button>
+                    <!-- <p-button severity="danger" icon="pi pi-trash" (click)="deleteGame(game.id)"> </p-button> -->
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template #emptymessage>
+            <tr>
+                <td colspan="7">No Game found.</td>
+            </tr>
+        </ng-template>
+        <ng-template #loadingbody>
+            <tr>
+                <td colspan="7">Loading Games data. Please wait.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+
+<p-dialog header="Edit Game" [modal]="true" [(visible)]="gamesFormVisible" [style]="{ width: '25rem' }">
+    <app-games-form></app-games-form>
+</p-dialog>
