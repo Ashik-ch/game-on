@@ -49,5 +49,5 @@
 
 
 <p-dialog header="Edit Game" [modal]="true" [(visible)]="gamesFormVisible" [style]="{ width: '25rem' }">
-    <app-games-form></app-games-form>
+    <app-games-form (formSubmitted)="onFormSubmitted()"></app-games-form>
 </p-dialog>

@@ -7,6 +7,9 @@ import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
 import { GamesFormComponent } from '../games-form/games-form.component';
+import { getGameListApiJson } from '../api';
+import { CommunicatorService } from 'src/app/service';
+import { GameListType } from '../helper';
 
 @Component({
   selector: 'app-games',
@@ -26,10 +29,27 @@ import { GamesFormComponent } from '../games-form/games-form.component';
 })
 export class GamesComponent {
   isLoading = false;
-  gamesList: any
+  gamesList!: GameListType[]
   gamesFormVisible = false;
 
-  constructor() { }
+  constructor(private communicatorService: CommunicatorService) { }
+
+
+  ngOnInit() {
+    this.getGamesList();
+  }
+
+  getGamesList() {
+    this.isLoading = true;
+    const getGameListApiPayload = { ...getGameListApiJson }
+    this.communicatorService.apiRunner(getGameListApiPayload).subscribe((apiReturn) => {
+      if (apiReturn) {
+        this.gamesList = apiReturn
+        this.isLoading = false;
+      }
+    });
+    this.isLoading = false;
+  }
 
 
   createGames() {
@@ -37,4 +57,9 @@ export class GamesComponent {
   }
   editGames(id: string) { }
 
+
+  onFormSubmitted() {
+    this.gamesFormVisible = false;
+
+  }
 }

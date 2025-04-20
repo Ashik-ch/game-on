@@ -10,8 +10,8 @@
 
         <div class="flex flex-wrap gap-2 w-full content-start">
             <label for="games">Turf Type</label>
-            <p-multiselect [options]="gamesData" formControlName="turfType" optionLabel="name" optionValue="value"
-                placeholder="Select Type" [maxSelectedLabels]="3" styleClass="w-full" />
+            <p-select [options]="turfTypes" formControlName="turfType" optionLabel="name" optionValue="value"
+                placeholder="Select Type" styleClass="w-full" />
         </div>
 
         <p-button type="submit" class="float-end">Submit</p-button>

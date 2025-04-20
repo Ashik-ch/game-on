@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, viewChild } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { MultiSelectModule } from 'primeng/multiselect';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FluidModule } from 'primeng/fluid';
 import { CommonModule } from '@angular/common';
 import { CommunicatorService } from 'src/app/service';
 import { patchGameUpdateFormApiJson, postGameCreateFormApiJson } from '../api';
+import { turfTypesEnum } from '../../turf';
+import { SelectModule } from 'primeng/select';
 
 @Component({
   selector: 'app-games-form',
@@ -18,15 +19,17 @@ import { patchGameUpdateFormApiJson, postGameCreateFormApiJson } from '../api';
     InputTextModule,
     ButtonModule,
     FluidModule,
-    MultiSelectModule,
+    SelectModule,
     ReactiveFormsModule,
     FormsModule,
   ],
 })
 export class GamesFormComponent {
-  gamesData: any
+  @Output() formSubmitted: EventEmitter<boolean> = new EventEmitter<boolean>();
+  gamesData: any;
   gamesForm!: FormGroup;
   gameId?: string
+  turfTypes = Object.values(turfTypesEnum).map(value => ({ name: value, value }));
 
 
   constructor(
@@ -59,7 +62,7 @@ export class GamesFormComponent {
       }
       this.communicatorService.apiRunner(formPayload).subscribe(apiReturn => {
         if (apiReturn) {
-          console.log("apiReturn", apiReturn)
+          this.formSubmitted.emit(true);
         }
       });
     }
