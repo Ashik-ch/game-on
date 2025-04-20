@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { FluidModule } from 'primeng/fluid';
 import { CommonModule } from '@angular/common';
 import { CommunicatorService } from 'src/app/service';
-import { patchGameUpdateFormApiJson, postGameCreateFormApiJson } from '../games/api';
+import { patchGameUpdateFormApiJson, postGameCreateFormApiJson } from '../api';
 
 @Component({
   selector: 'app-games-form',

@@ -4,7 +4,7 @@ import { Crud } from './crud/crud';
 import { Empty } from './empty/empty';
 import { TurfCardComponent } from './turf/turf-card';
 import { TurfFormComponent } from './turf/turf-form';
-import { GamesComponent } from './games/games.component';
+import { GamesComponent } from './games';
 
 export default [
     { path: 'turf', component: TurfCardComponent },
